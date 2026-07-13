@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Presença - Cristiane 49</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #0d0c0a;
+            color: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 420px;
+            background: #141311;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border: 1px solid #d4af37;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        h2 {
+            color: #d4af37;
+            margin-bottom: 5px;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        p.subtitle {
+            color: #a89d80;
+            font-size: 14px;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #d4af37;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #333;
+            background-color: #1a1917;
+            color: #fff;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 15px;
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus {
+            border-color: #d4af37;
+            outline: none;
+        }
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 5px;
+        }
+        .radio-option {
+            flex: 1;
+            background: #1a1917;
+            border: 1px solid #333;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .radio-option input {
+            display: none;
+        }
+        .radio-option.selected {
+            border-color: #d4af37;
+            background: rgba(212, 175, 55, 0.1);
+            color: #d4af37;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #d4af37 0%, #aa8416 100%);
+            border: none;
+            color: #0d0c0a;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+            transition: 0.3s;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+        .hidden {
+            display: none;
+        }
+
+        /* Estilos da Mensagem de Sucesso */
+        .success-message {
+            display: none;
+            padding: 20px 10px;
+        }
+        .success-icon {
+            font-size: 50px;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+        .success-title {
+            font-size: 22px;
+            color: #d4af37;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .success-text {
+            color: #a89d80;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- FORMULÁRIO -->
+        <div id="formContainer">
+            <h2>Confirmar Presença</h2>
+            <p class="subtitle">✨Aniversário da Cristiane✨</p>
+
+            <!-- Seu link do Formspree configurado aqui embaixo -->
+            <form id="formConfirmacao" action="https://formspree.io/f/mkodnaod" method="POST">
+                
+                <!-- Nome do Convidado Principal -->
+                <div class="form-group">
+                    <label for="nome">Seu Nome Completo:</label>
+                    <input type="text" id="nome" name="Nome" placeholder="Digite seu nome..." required>
+                </div>
+
+                <!-- Vai comparecer? -->
+                <div class="form-group">
+                    <label>Você irá ao evento?</label>
+                    <div class="radio-group">
+                        <label class="radio-option selected" id="opcaoSim">
+                            <input type="radio" name="Comparecer" value="Sim" checked> Sim, irei!
+                        </label>
+                        <label class="radio-option" id="opcaoNao">
+                            <input type="radio" name="Comparecer" value="Não"> Não poderei ir
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Seção de Acompanhantes -->
+                <div id="secaoAcompanhantes">
+                    <div class="form-group">
+                        <label for="acompanhantes">Terá acompanhantes com você?</label>
+                        <select id="acompanhantes" name="Quantidade Acompanhantes">
+                            <option value="0">Não, vou sozinho(a)</option>
+                            <option value="1">Sim, vou com +1 pessoa</option>
+                            <option value="2">Sim, vou com +2 pessoas</option>
+                            <option value="3">Sim, vou com +3 pessoas</option>
+                            <option value="4">Sim, vou com +4 pessoas</option>
+                        </select>
+                    </div>
+
+                    <!-- Nome do acompanhante -->
+                    <div class="form-group hidden" id="campoNomesAcompanhantes">
+                        <label for="nomesAcompanhantes">Nome(s) do(s) acompanhante(s):</label>
+                        <input type="text" id="nomesAcompanhantes" name="Nomes Acompanhantes" placeholder="Ex: João Silva, Maria Souza...">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">Enviar Confirmação</button>
+            </form>
+        </div>
+
+        <!-- MENSAGEM DE SUCESSO -->
+        <div id="successContainer" class="success-message">
+            <div class="success-icon">✨</div>
+            <div class="success-title">Presença Confirmada!</div>
+            <p class="success-text">Muito obrigado por responder.</p>
+            <p class="success-text" style="font-weight: bold; color: #d4af37; margin-top: 20px;">Até breve!</p>
+        </div>
+    </div>
+
+    <script>
+        // Lógica de alternância Sim/Não
+        const opcaoSim = document.getElementById('opcaoSim');
+        const opcaoNao = document.getElementById('opcaoNao');
+        const secaoAcompanhantes = document.getElementById('secaoAcompanhantes');
+        const radioSim = document.querySelector('input[value="Sim"]');
+        const radioNao = document.querySelector('input[value="Não"]');
+
+        opcaoSim.addEventListener('click', () => {
+            opcaoSim.classList.add('selected');
+            opcaoNao.classList.remove('selected');
+            radioSim.checked = true;
+            secaoAcompanhantes.classList.remove('hidden');
+        });
+
+        opcaoNao.addEventListener('click', () => {
+            opcaoNao.classList.add('selected');
+            opcaoSim.classList.remove('selected');
+            radioNao.checked = true;
+            secaoAcompanhantes.classList.add('hidden');
+        });
+
+        // Mostrar/esconder campo de nomes dos acompanhantes
+        const selectAcompanhantes = document.getElementById('acompanhantes');
+        const campoNomesAcompanhantes = document.getElementById('campoNomesAcompanhantes');
+        const inputNomes = document.getElementById('nomesAcompanhantes');
+
+        selectAcompanhantes.addEventListener('change', (e) => {
+            if (e.target.value > 0) {
+                campoNomesAcompanhantes.classList.remove('hidden');
+                inputNomes.required = true;
+            } else {
+                campoNomesAcompanhantes.classList.add('hidden');
+                inputNomes.required = false;
+                inputNomes.value = '';
+            }
+        });
+
+        // Enviar os dados via AJAX para não recarregar a página e exibir a mensagem de sucesso
+        const form = document.getElementById('formConfirmacao');
+        const formContainer = document.getElementById('formContainer');
+        const successContainer = document.getElementById('successContainer');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Impede o redirecionamento padrão do Formspree
+
+            const data = new FormData(form);
+
+            fetch(form.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                // Esconde o formulário e mostra a tela de "Até breve"
+                formContainer.style.display = 'none';
+                successContainer.style.display = 'block';
+            }).catch(error => {
+                alert('Ops! Ocorreu um problema ao enviar. Tente novamente.');
+            });
+        });
+    </script>
+</body>
+</html>

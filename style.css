@@ -1,0 +1,126 @@
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+body{
+
+    background:#111;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:100vh;
+
+    padding:20px;
+
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+
+.convite{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:500px;
+
+}
+
+.convite img{
+
+    width:100%;
+
+    display:block;
+
+    border-radius:20px;
+
+    box-shadow:0 0 30px rgba(0,0,0,.5);
+
+}
+
+/* PARA TESTAR
+deixe vermelho.
+Depois colocamos transparente.
+*/
+
+.confirmar{
+
+    position:absolute;
+
+    left:5%;
+
+    top:58.8%;
+
+    width:90%;
+
+    height:8.3%;
+
+    background:red;
+
+    opacity:.35;
+
+}
+
+.cardapio{
+
+    position:absolute;
+
+    left:5%;
+
+    top:69.7%;
+
+    width:90%;
+
+    height:8.3%;
+
+    background:blue;
+
+    opacity:.35;
+
+}
+
+.maps{
+
+    position:absolute;
+
+    left:5%;
+
+    top:80.5%;
+
+    width:90%;
+
+    height:8.3%;
+
+    background:green;
+
+    opacity:.35;
+
+}
+
+.hotel{
+
+    position:absolute;
+
+    left:5%;
+
+    top:91.3%;
+
+    width:90%;
+
+    height:8.3%;
+
+    background:gold;
+
+    opacity:.35;
+
+}
